@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Lost Item</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Campus Lost & Found Portal</h1>
+
+    <nav>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="lost-items.html">View Items</a>
+
+    </nav>
+
+</header>
+
+<div class="form-container">
+
+    <h2>Report Lost Item</h2>
+
+    <form id="itemForm">
+
+        <input type="text" id="itemName" placeholder="Item Name" required>
+
+        <input type="text" id="category" placeholder="Category" required>
+
+        <input type="text" id="location" placeholder="Lost Location" required>
+
+        <input type="date" id="dateLost" required>
+
+        <div class="form-group">
+    <label>Upload Item Image</label>
+    <input
+        type="file"
+        id="imageFile"
+        accept="image/*">
+</div>
+
+        <textarea
+            id="description"
+            placeholder="Description"
+            rows="5"
+            required></textarea>
+
+        <button type="submit">
+            Submit
+        </button>
+
+    </form>
+
+</div>
+<script src="js/toast.js"></script>
+<script src="js/app.js"></script>
+<footer class="footer">
+
+<p>
+
+© 2026 Campus Lost & Found Portal |
+Developed by Vishnu Reddy
+
+</p>
+
+</footer>
+</body>
+</html>
