@@ -1,3 +1,4 @@
+const API_URL = "https://campus-lost-found-portal-tgd1.onrender.com";
 const registerForm = document.getElementById("registerForm");
 
 if(registerForm){
@@ -20,7 +21,7 @@ role:"USER"
 
 };
 
-const response=await fetch("http://localhost:8080/api/users/register",{
+const response=await fetch(`${API_URL}/api/users/register`, {
 
 method:"POST",
 
@@ -67,8 +68,7 @@ if (loginForm) {
 
         };
 
-        const response = await fetch("http://localhost:8080/api/users/login", {
-
+        const response = await fetch(`${API_URL}/api/users/login`,{
             method: "POST",
 
             headers: {
@@ -152,7 +152,7 @@ if (imageFile) {
     formData.append("file", imageFile);
 
     const uploadResponse = await fetch(
-        "http://localhost:8080/api/images/upload",
+    `${API_URL}/api/images/upload`,
         {
             method: "POST",
             body: formData
@@ -182,7 +182,7 @@ const item = {
 
 };
 
-const response=await fetch("http://localhost:8080/api/lost-items",{
+const response = await fetch(`${API_URL}/api/lost-items`,{
 
 method:"POST",
 
@@ -223,7 +223,7 @@ let allItems = [];
 
 async function loadItems() {
 
-    const response = await fetch("http://localhost:8080/api/lost-items");
+    const response = await fetch(`${API_URL}/api/lost-items`)
 
     allItems = await response.json();
 
@@ -246,7 +246,7 @@ function displayItems(items) {
             <div class="image-box">
 
     <img
-        src="http://localhost:8080/uploads/${item.imageUrl}"
+        src="${API_URL}/uploads/${item.imageUrl}"
         class="item-image"
         alt="${item.itemName}"
     >
@@ -325,7 +325,7 @@ async function deleteItem(id){
 
     }
 
-    const response = await fetch("http://localhost:8080/api/lost-items/" + id,{
+    const response = await fetch(`${API_URL}/api/lost-items/${id}`, {
 
         method:"DELETE"
 
@@ -401,15 +401,15 @@ async function claimItem(itemId) {
     };
 
     const response = await fetch(
-        "http://localhost:8080/api/claims/" + itemId,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(claim)
-        }
-    );
+    `${API_URL}/api/claims/${itemId}`,
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(claim)
+    }
+);
 
     if (response.ok) {
 
@@ -430,7 +430,7 @@ if (claimsContainer) {
 
 async function loadClaims() {
 
-    const response = await fetch("http://localhost:8080/api/claims");
+    const response = await fetch(`${API_URL}/api/claims`);
 
     const claims = await response.json();
 
@@ -470,7 +470,7 @@ async function loadClaims() {
 async function approveClaim(id){
 
     const response = await fetch(
-        "http://localhost:8080/api/claims/" + id + "/approve",
+    `${API_URL}/api/claims/${id}/approve`,
         {
             method:"PUT"
         }
@@ -488,7 +488,7 @@ async function approveClaim(id){
 async function rejectClaim(id){
 
     const response = await fetch(
-        "http://localhost:8080/api/claims/" + id + "/reject",
+    `${API_URL}/api/claims/${id}/reject`,
         {
             method:"PUT"
         }
@@ -513,8 +513,7 @@ if(recentItems){
 
 async function loadRecentItems(){
 
-    const response = await fetch("http://localhost:8080/api/lost-items");
-
+    const response = await fetch(`${API_URL}/api/lost-items`);
     const items = await response.json();
 
     const latest = items.slice(-5).reverse();
@@ -527,7 +526,7 @@ async function loadRecentItems(){
 
         <div class="recent-card">
 
-            <img src="http://localhost:8080/uploads/${item.imageUrl}">
+            <img src="${API_URL}/uploads/${item.imageUrl}">
 
             <h3>${item.itemName}</h3>
 
@@ -550,7 +549,7 @@ if (totalItems) {
 
 async function loadDashboardStats() {
 
-    const response = await fetch("http://localhost:8080/api/lost-items");
+    const response = await fetch(`${API_URL}/api/lost-items`);
 
     const items = await response.json();
 
@@ -583,7 +582,7 @@ async function loadMyItems() {
 
     }
 
-    const response = await fetch("http://localhost:8080/api/lost-items");
+    const response = await fetch(`${API_URL}/api/lost-items`);
 
     const items = await response.json();
 
@@ -620,7 +619,7 @@ function displayMyItems(items) {
             <div class="image-box">
 
                 <img
-                    src="http://localhost:8080/uploads/${item.imageUrl}"
+                    src="${API_URL}/uploads/${item.imageUrl}"
                     class="item-image"
                     alt="${item.itemName}"
                 >
